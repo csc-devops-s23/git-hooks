@@ -1,0 +1,22 @@
+- group:
+    description: "Deploy directory setup"
+    checks:
+     - reachable:
+         - /srv
+         - /srv/production-www
+         - /srv/production.git
+
+- group:
+    description: "Post-receive setup"
+    checks:
+
+     - contains: 
+         string: /srv/production-www/ git checkout -f
+         file: /srv/production.git/hooks/post-receive
+
+     - reachable:
+         - /srv/production-www/main.js
+     - availability:
+         port: 5001
+         status: 200
+         url: /

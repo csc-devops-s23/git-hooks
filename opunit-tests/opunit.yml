@@ -1,0 +1,27 @@
+- group:
+    description: "Essential workshop tools"
+    checks:
+     - version:
+         cmd: node --version
+         range: ^10.x.x
+     - version:
+         cmd: git --version
+         range: ^2.17.x
+     - version:
+         cmd: curl --version
+         range: ^7.54.x         
+
+- group:
+    description: "App setup"
+    checks:
+
+     - reachable:
+         - node_modules
+
+- group:
+    description: "Pre-commit setup"
+    checks:
+
+     - contains: 
+         string: npm test
+         file: .git/hooks/pre-commit

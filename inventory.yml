@@ -1,0 +1,10 @@
+---
+- local:
+  - name: local
+    criteria_path: opunit-tests/opunit.yml
+    
+- ssh:
+  - name: production
+    target: root@159.223.101.113
+    private_key: ~/.ssh/id_rsa
+    criteria_path: opunit-tests/app.yml
